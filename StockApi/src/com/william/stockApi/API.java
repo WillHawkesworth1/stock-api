@@ -614,6 +614,222 @@ public class API {
 			connection.disconnect();
 		}
 	}
+
+	public static void updateUser(String id, String username, String password) {
+		URL url;
+		try {
+			url = new URL ("https://europe-west2-gwentgrailsstockapi.cloudfunctions.net/ggstock-edit-user-mongo");
+		
+		connection = (HttpURLConnection)url.openConnection();
+		connection.setRequestMethod("POST");
+		connection.setRequestProperty("Content-Type", "application/json; utf-8");
+		connection.setDoOutput(true);
+		
+		String jsonInputString = "{\"ID\":\"" + id + "\", \"userDetails\":{ \"Username\":\"" + username + "\", \"Password\": \"" + password + "\", \"ID\": \"" + id + "\"}}";
+		System.out.print(jsonInputString);
+		
+		try(OutputStream os = connection.getOutputStream()) {
+		    byte[] input = jsonInputString.getBytes("utf-8");
+		    os.write(input, 0, input.length);			
+		}
+		
+		try(BufferedReader br = new BufferedReader(
+			new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+			StringBuilder response = new StringBuilder();
+			String responseLine = null;
+			while ((responseLine = br.readLine()) != null) {
+				response.append(responseLine.trim());
+			}
+			 System.out.println(response.toString());
+		} 
+		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			connection.disconnect();
+		}
+	}
+	
+	public static void updateCost(String id, String name, String category, String price, String date) {
+		URL url;
+		try {
+			url = new URL ("https://europe-west2-gwentgrailsstockapi.cloudfunctions.net/ggstock-update-cost-mongo");
+		
+		connection = (HttpURLConnection)url.openConnection();
+		connection.setRequestMethod("POST");
+		connection.setRequestProperty("Content-Type", "application/json; utf-8");
+		connection.setDoOutput(true);
+		
+		String jsonInputString = "{\"ID\":\"" + id + "\", \"costDetails\":{ \"Name\":\"" + name + "\", \"Category\": \"" + category + "\", \"Price\": \"" + price + "\", \"Date\": \"" + date + "\", \"ID\": \"" + id + "\"}}";
+		System.out.print(jsonInputString);
+		
+		try(OutputStream os = connection.getOutputStream()) {
+		    byte[] input = jsonInputString.getBytes("utf-8");
+		    os.write(input, 0, input.length);			
+		}
+		
+		try(BufferedReader br = new BufferedReader(
+			new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+			StringBuilder response = new StringBuilder();
+			String responseLine = null;
+			while ((responseLine = br.readLine()) != null) {
+				response.append(responseLine.trim());
+			}
+			 System.out.println(response.toString());
+		} 
+		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			connection.disconnect();
+		}
+	}
+	
+	public static void updateInvestment(String id, String name, String brand, String colour, String price, String sale, String condition, String datebought, String datesell) {
+		URL url;
+		try {
+			url = new URL ("https://europe-west2-gwentgrailsstockapi.cloudfunctions.net/ggstock-edit-investment-mongo");
+		
+		connection = (HttpURLConnection)url.openConnection();
+		connection.setRequestMethod("POST");
+		connection.setRequestProperty("Content-Type", "application/json; utf-8");
+		connection.setDoOutput(true);
+		
+		String jsonInputString = "{\"ID\":\"" + id + "\", \"investmentDetails\":{ \"Name\":\"" + name + "\", \"Brand\": \"" + brand + "\", \"Colour\": \"" + colour + "\", \"Price\": \"" + price + "\", \"Sa;e\": \"" + sale + "\", \"Condition\": \"" + condition + "\", \"DateBought\": \"" + datebought + "\", \"DateSell\": \"" + datesell + "\",  \"ID\": \"" + id + "\"}}";		
+		System.out.print(jsonInputString);
+		
+		try(OutputStream os = connection.getOutputStream()) {
+		    byte[] input = jsonInputString.getBytes("utf-8");
+		    os.write(input, 0, input.length);			
+		}
+		
+		try(BufferedReader br = new BufferedReader(
+			new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+			StringBuilder response = new StringBuilder();
+			String responseLine = null;
+			while ((responseLine = br.readLine()) != null) {
+				response.append(responseLine.trim());
+			}
+			 System.out.println(response.toString());
+		} 
+		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			connection.disconnect();
+		}
+	}
+
+	public static void updateShoe(String id, String name, String brand, String colour, String price, String sale, String condition, String datebought) {
+		URL url;
+		try {
+			url = new URL ("https://europe-west2-gwentgrailsstockapi.cloudfunctions.net/ggstock-edit-shoe-mongo");
+		
+		connection = (HttpURLConnection)url.openConnection();
+		connection.setRequestMethod("POST");
+		connection.setRequestProperty("Content-Type", "application/json; utf-8");
+		connection.setDoOutput(true);
+		
+		String jsonInputString = "{\"ID\":\"" + id + "\", \"shoeDetails\":{ \"Name\":\"" + name + "\", \"Brand\": \"" + brand + "\", \"Colour\": \"" + colour + "\", \"Price\": \"" + price + "\", \"Sa;e\": \"" + sale + "\", \"Condition\": \"" + condition + "\", \"DateBought\": \"" + datebought + "\", \"ID\": \"" + id + "\"}}";		
+		System.out.print(jsonInputString);
+		
+		try(OutputStream os = connection.getOutputStream()) {
+		    byte[] input = jsonInputString.getBytes("utf-8");
+		    os.write(input, 0, input.length);			
+		}
+		
+		try(BufferedReader br = new BufferedReader(
+			new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+			StringBuilder response = new StringBuilder();
+			String responseLine = null;
+			while ((responseLine = br.readLine()) != null) {
+				response.append(responseLine.trim());
+			}
+			 System.out.println(response.toString());
+		} 
+		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			connection.disconnect();
+		}
+	}
+	
+	public static void updateSold(String id, String name, String brand, String colour, String price, String sale, String sold, String condition, String datebought, String datesell) {
+		URL url;
+		try {
+			url = new URL ("https://europe-west2-gwentgrailsstockapi.cloudfunctions.net/ggstock-update-sold-mongo");
+		
+		connection = (HttpURLConnection)url.openConnection();
+		connection.setRequestMethod("POST");
+		connection.setRequestProperty("Content-Type", "application/json; utf-8");
+		connection.setDoOutput(true);
+		
+		String jsonInputString = "{\"ID\":\"" + id + "\", \"soldDetails\":{ \"Name\":\"" + name + "\", \"Brand\": \"" + brand + "\", \"Colour\": \"" + colour + "\", \"Price\": \"" + price + "\", \"Sa;e\": \"" + sale + "\", \"Sold\": \"" + sold + "\", \"Condition\": \"" + condition + "\", \"DateBought\": \"" + datebought + "\", \"DateSell\": \"" + datesell + "\",  \"ID\": \"" + id + "\"}}";		
+		System.out.print(jsonInputString);
+		
+		try(OutputStream os = connection.getOutputStream()) {
+		    byte[] input = jsonInputString.getBytes("utf-8");
+		    os.write(input, 0, input.length);			
+		}
+		
+		try(BufferedReader br = new BufferedReader(
+			new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+			StringBuilder response = new StringBuilder();
+			String responseLine = null;
+			while ((responseLine = br.readLine()) != null) {
+				response.append(responseLine.trim());
+			}
+			 System.out.println(response.toString());
+		} 
+		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			connection.disconnect();
+		}
+	}	
+
+	public static void updateStock(String id, String name, String brand) {
+		URL url;
+		try {
+			url = new URL ("https://europe-west2-gwentgrailsstockapi.cloudfunctions.net/ggstock-edit-stock-mongo");
+		
+		connection = (HttpURLConnection)url.openConnection();
+		connection.setRequestMethod("POST");
+		connection.setRequestProperty("Content-Type", "application/json; utf-8");
+		connection.setDoOutput(true);
+		
+		String jsonInputString = "{\"ID\":\"" + id + "\", \"investmentDetails\":{ \"Name\":\"" + name + "\", \"Brand\": \"" + brand + "\", \"ID\": \"" + id + "\"}}";		
+		System.out.print(jsonInputString);
+		
+		try(OutputStream os = connection.getOutputStream()) {
+		    byte[] input = jsonInputString.getBytes("utf-8");
+		    os.write(input, 0, input.length);			
+		}
+		
+		try(BufferedReader br = new BufferedReader(
+			new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+			StringBuilder response = new StringBuilder();
+			String responseLine = null;
+			while ((responseLine = br.readLine()) != null) {
+				response.append(responseLine.trim());
+			}
+			 System.out.println(response.toString());
+		} 
+		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			connection.disconnect();
+		}
+	}
 }
 
 
